@@ -1,189 +1,104 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import content from './data/locales.json'
 
 type Lang = 'es' | 'en'
 type Theme = 'gengar' | 'blaziken'
 
-const lang = ref<Lang>('es')
-const theme = ref<Theme>('gengar')
+const savedLang = localStorage.getItem('portfolio-lang') as Lang | null
+const lang = ref<Lang>(savedLang === 'es' || savedLang === 'en' ? savedLang : 'es')
+
+const savedTheme = localStorage.getItem('portfolio-theme') as Theme | null
+const theme = ref<Theme>(savedTheme === 'gengar' || savedTheme === 'blaziken' ? savedTheme : 'gengar')
+
+watch(lang, (value) => {
+  localStorage.setItem('portfolio-lang', value)
+})
 
 watch(theme, (value) => {
+  localStorage.setItem('portfolio-theme', value)
   document.documentElement.setAttribute('data-theme', value)
 }, { immediate: true })
 
-const content = {
-  es: {
-    nav: ['Impacto', 'Case Study', 'Experiencia', 'Stack', 'Contacto'],
-    role: 'Lead Backend Engineer',
-    heroLine: 'Backend cloud para sistemas que no pueden fallar.',
-    intro: 'Construyo plataformas backend escalables para telecomunicaciones y servicios financieros: microservicios, APIs productivas, integraciones enterprise y modernización de sistemas legacy sobre AWS.',
-    ctaPrimary: 'Contactar',
-    ctaSecondary: 'Ver GitHub',
-    location: 'Mérida, Yucatán, México',
-    metricTitle: 'Impacto técnico',
-    stats: [
-      ['30+', 'Microservicios'],
-      ['15+', 'APIs empresariales'],
-      ['5+', 'Developers liderados'],
-      ['6+', 'Años de experiencia']
-    ],
-    projectTitle: 'Proyecto insignia',
-    projectName: 'MVNO Macropay + Altán',
-    projectLead: 'Lideré técnicamente el backend del operador móvil virtual de Macropay desde cero, integrando telecomunicaciones, pagos, SAP y procesos críticos de negocio.',
-    projectBullets: [
-      'Integración con Altán mediante Innovatia.',
-      'Flujos para líneas nuevas, portabilidad numérica y recargas.',
-      'Envío automático de pagos exitosos hacia SAP para procesos contables.',
-      'Backend basado en microservicios, APIs REST, TypeScript y AWS.',
-      'Supervisión de frontend, soporte QA y resolución de defectos.'
-    ],
-    domainsTitle: 'Donde genero valor',
-    domains: [
-      ['Telecom', 'MVNO, Altán, portabilidad, recargas y servicios móviles.'],
-      ['Fintech', 'SAP, Belvo, Tapi, créditos, pagos e integraciones financieras.'],
-      ['Cloud', 'AWS Lambda, ECS, API Gateway, SQS, DynamoDB, S3 y CloudWatch.'],
-      ['Modernización', 'Migración legacy, desacoplamiento de monolitos y event-driven systems.']
-    ],
-    expTitle: 'Experiencia profesional',
-    jobs: [
-      {
-        company: 'Fundación Rafael Dondé IAP',
-        title: 'Senior Fullstack / Backend Developer',
-        period: 'Feb 2025 – Actualidad',
-        points: [
-          'Modernización de sistemas legacy hacia tecnologías actuales.',
-          'Integración de colas Amazon SQS con monolitos para desacoplar procesos críticos.',
-          'Integraciones financieras con Tapi.',
-          'Desarrollo de APIs, microservicios y soluciones cloud sobre AWS.'
-        ]
-      },
-      {
-        company: 'Macropay',
-        title: 'Backend Semi Senior / Technical Lead',
-        period: 'Sep 2022 – Feb 2025',
-        points: [
-          'Liderazgo técnico en plataforma MVNO sobre infraestructura Altán.',
-          'Desarrollo de 30+ microservicios y 15+ APIs en TypeScript/JavaScript.',
-          'Servicios en AWS Lambda, ECS, API Gateway, SQS, DynamoDB, S3 y CloudWatch.',
-          'Integraciones con SAP, Belvo y sistemas internos de crédito.'
-        ]
-      },
-      {
-        company: 'Grupo Boxito / Blue Ocean / COMA',
-        title: 'Software Engineer',
-        period: '2019 – 2022',
-        points: [
-          'APIs internas, automatización de procesos y software empresarial.',
-          'Experiencia con C#, SQL Server, Oracle, Angular, Azure, IIS y sistemas legacy.'
-        ]
-      }
-    ],
-    stackTitle: 'Stack tecnológico',
-    stackGroups: [
-      ['Backend', ['Node.js', 'TypeScript', 'JavaScript', 'C#', '.NET', 'REST APIs', 'Microservices']],
-      ['AWS', ['Lambda', 'ECS', 'API Gateway', 'SQS', 'DynamoDB', 'S3', 'CloudWatch']],
-      ['DevOps', ['Docker', 'Jenkins', 'CI/CD', 'Git', 'Dev / QA / Staging / Prod']],
-      ['Enterprise', ['SAP', 'Belvo', 'Tapi', 'Legacy modernization', 'Event-driven systems']]
-    ],
-    certTitle: 'Certificación',
-    cert: 'AWS Associate — en proceso',
-    contactTitle: 'Listo para construir sistemas de alto impacto',
-    contactText: 'Abierto a oportunidades como Lead Backend Engineer, Senior Backend Engineer o AWS Backend Engineer en fintech, telecom, banca, seguros o modernización cloud.',
-    contactButton: 'Enviar correo',
-    modeGengar: 'Oscuro',
-    modeBlaziken: 'Claro'
-  },
-  en: {
-    nav: ['Impact', 'Case Study', 'Experience', 'Stack', 'Contact'],
-    role: 'Lead Backend Engineer',
-    heroLine: 'Cloud backend for systems that cannot fail.',
-    intro: 'I build scalable backend platforms for telecom and financial services: microservices, production APIs, enterprise integrations and AWS-based legacy modernization.',
-    ctaPrimary: 'Contact',
-    ctaSecondary: 'View GitHub',
-    location: 'Mérida, Yucatán, Mexico',
-    metricTitle: 'Technical impact',
-    stats: [
-      ['30+', 'Microservices'],
-      ['15+', 'Enterprise APIs'],
-      ['5+', 'Developers led'],
-      ['6+', 'Years of experience']
-    ],
-    projectTitle: 'Signature project',
-    projectName: 'Macropay MVNO + Altán',
-    projectLead: 'Technical leadership in the backend development of Macropay’s MVNO from zero, integrating telecom services, payments, SAP and business-critical processes.',
-    projectBullets: [
-      'Integration with Altán through Innovatia.',
-      'New line activation, number portability and mobile top-up flows.',
-      'Automatic delivery of successful payment data to SAP for accounting processes.',
-      'Backend based on microservices, REST APIs, TypeScript and AWS.',
-      'Frontend supervision, QA support and defect resolution.'
-    ],
-    domainsTitle: 'Where I create value',
-    domains: [
-      ['Telecom', 'MVNO, Altán, portability, mobile top-ups and mobile services.'],
-      ['Fintech', 'SAP, Belvo, Tapi, credit systems, payments and financial integrations.'],
-      ['Cloud', 'AWS Lambda, ECS, API Gateway, SQS, DynamoDB, S3 and CloudWatch.'],
-      ['Modernization', 'Legacy migration, monolith decoupling and event-driven systems.']
-    ],
-    expTitle: 'Professional experience',
-    jobs: [
-      {
-        company: 'Fundación Rafael Dondé IAP',
-        title: 'Senior Fullstack / Backend Developer',
-        period: 'Feb 2025 – Present',
-        points: [
-          'Modernization of legacy systems into current technologies.',
-          'Amazon SQS queue integration with monolithic systems to decouple critical processes.',
-          'Financial integrations with Tapi.',
-          'Backend APIs, microservices and AWS cloud solutions.'
-        ]
-      },
-      {
-        company: 'Macropay',
-        title: 'Backend Semi Senior / Technical Lead',
-        period: 'Sep 2022 – Feb 2025',
-        points: [
-          'Technical leadership in an MVNO platform built on Altán infrastructure.',
-          'Built 30+ microservices and 15+ APIs using TypeScript/JavaScript.',
-          'Implemented services using AWS Lambda, ECS, API Gateway, SQS, DynamoDB, S3 and CloudWatch.',
-          'Integrations with SAP, Belvo and internal credit systems.'
-        ]
-      },
-      {
-        company: 'Grupo Boxito / Blue Ocean / COMA',
-        title: 'Software Engineer',
-        period: '2019 – 2022',
-        points: [
-          'Internal APIs, process automation and enterprise software systems.',
-          'Experience with C#, SQL Server, Oracle, Angular, Azure, IIS and legacy systems.'
-        ]
-      }
-    ],
-    stackTitle: 'Technical stack',
-    stackGroups: [
-      ['Backend', ['Node.js', 'TypeScript', 'JavaScript', 'C#', '.NET', 'REST APIs', 'Microservices']],
-      ['AWS', ['Lambda', 'ECS', 'API Gateway', 'SQS', 'DynamoDB', 'S3', 'CloudWatch']],
-      ['DevOps', ['Docker', 'Jenkins', 'CI/CD', 'Git', 'Dev / QA / Staging / Prod']],
-      ['Enterprise', ['SAP', 'Belvo', 'Tapi', 'Legacy modernization', 'Event-driven systems']]
-    ],
-    certTitle: 'Certification',
-    cert: 'AWS Associate — in progress',
-    contactTitle: 'Ready to build high-impact systems',
-    contactText: 'Open to Lead Backend Engineer, Senior Backend Engineer or AWS Backend Engineer opportunities in fintech, telecom, banking, insurance or cloud modernization.',
-    contactButton: 'Send email',
-    modeGengar: 'Dark',
-    modeBlaziken: 'Light'
-  }
-}
+type StackGroup = [string, string[]]
 
-const t = computed(() => content[lang.value])
+const t = computed(() => {
+  const data = content[lang.value]
+  return {
+    ...data,
+    stackGroups: data.stackGroups as StackGroup[]
+  }
+})
 const linkedIn = 'https://www.linkedin.com/in/luis-eduardo-ronquillo-arroyo-7328a4118'
 const github = 'https://github.com/LuisRonquillo97'
 const email = 'mailto:lronquillo977@gmail.com'
+
+const isViewingCV = ref(false)
+
+const checkHash = () => {
+  isViewingCV.value = window.location.hash === '#/cv' || window.location.hash === '#cv'
+}
+
+let observer: IntersectionObserver | null = null
+
+const setupScrollObserver = () => {
+  if (observer) {
+    observer.disconnect()
+  }
+
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible')
+        observer?.unobserve(entry.target)
+      }
+    })
+  }, {
+    threshold: 0.05,
+    rootMargin: '0px 0px -50px 0px'
+  })
+
+  document.querySelectorAll('.section').forEach((section) => {
+    observer?.observe(section)
+  })
+}
+
+watch(isViewingCV, async (val) => {
+  window.scrollTo(0, 0)
+  if (!val) {
+    await nextTick()
+    setupScrollObserver()
+  }
+})
+
+onMounted(() => {
+  window.addEventListener('hashchange', checkHash)
+  checkHash()
+  setupScrollObserver()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('hashchange', checkHash)
+  if (observer) {
+    observer.disconnect()
+  }
+})
+
+const viewCV = () => {
+  window.location.hash = '#/cv'
+}
+
+const goBack = () => {
+  window.location.hash = '#'
+}
+
+const printCV = () => {
+  window.print()
+}
 </script>
 
 <template>
-  <main>
+  <main v-if="!isViewingCV">
     <header class="nav">
       <a class="brand" href="#">Luis Ronquillo</a>
 
@@ -196,20 +111,25 @@ const email = 'mailto:lronquillo977@gmail.com'
       </nav>
 
       <div class="controls">
-        <div class="pillControl">
-          <button :class="{ active: theme === 'gengar' }" @click="theme = 'gengar'">👻 {{ t.modeGengar }}</button>
-          <button :class="{ active: theme === 'blaziken' }" @click="theme = 'blaziken'">🔥 {{ t.modeBlaziken }}</button>
-        </div>
+        <button @click="viewCV" class="btn-cv-nav">📄 {{ t.cvDownloadCTA }}</button>
         <div class="pillControl">
           <button :class="{ active: lang === 'es' }" @click="lang = 'es'">ES</button>
           <button :class="{ active: lang === 'en' }" @click="lang = 'en'">EN</button>
+        </div>
+        <div class="pillControl">
+          <button :class="{ active: theme === 'gengar' }" @click="theme = 'gengar'">😈 {{ t.modeGengar }}</button>
+          <button :class="{ active: theme === 'blaziken' }" @click="theme = 'blaziken'">👊 {{ t.modeBlaziken }}</button>
         </div>
       </div>
     </header>
 
     <section class="hero">
       <div class="avatarWrap">
-        <div class="avatar">LR</div>
+        <div class="avatar">
+          <transition name="fade" mode="out-in">
+            <img :key="theme" :src="theme === 'gengar' ? '/avatar_dark.jpeg' : '/avatar_light.jpeg'">
+          </transition>
+        </div>
       </div>
 
       <p class="eyebrow">{{ t.location }}</p>
@@ -228,7 +148,8 @@ const email = 'mailto:lronquillo977@gmail.com'
 
       <div class="actions">
         <a :href="email" class="btn primary">{{ t.ctaPrimary }}</a>
-        <a :href="github" target="_blank" class="btn secondary">{{ t.ctaSecondary }}</a>
+        <button @click="viewCV" class="btn secondary">📄 {{ t.cvDownloadCTA }}</button>
+        <a :href="github" target="_blank" class="btn ghost">{{ t.ctaSecondary }}</a>
         <a :href="linkedIn" target="_blank" class="btn ghost">LinkedIn</a>
       </div>
     </section>
@@ -315,8 +236,8 @@ const email = 'mailto:lronquillo977@gmail.com'
     </section>
 
     <section id="contact" class="section contact">
-      <p class="eyebrow">{{ t.contactTitle }}</p>
-      <h2>{{ t.contactText }}</h2>
+      <p class="eyebrow">{{ t.contactText }}</p>
+      <h2>{{ t.contactTitle }}</h2>
       <div class="actions">
         <a :href="email" class="btn primary">{{ t.contactButton }}</a>
         <a :href="linkedIn" target="_blank" class="btn secondary">LinkedIn</a>
@@ -326,4 +247,103 @@ const email = 'mailto:lronquillo977@gmail.com'
 
     <footer>© 2026 Luis Ronquillo. Built with Vue 3 + TypeScript.</footer>
   </main>
+
+  <div v-else class="cv-page-wrapper">
+    <!-- Controls bar for CV (hidden on print) -->
+    <div class="cv-controls">
+      <button @click="goBack" class="btn-cv-control">
+        ← {{ t.cvBackButton }}
+      </button>
+      <div class="cv-controls-right">
+        <div class="pillControl cv-lang-toggle">
+          <button :class="{ active: lang === 'es' }" @click="lang = 'es'">ES</button>
+          <button :class="{ active: lang === 'en' }" @click="lang = 'en'">EN</button>
+        </div>
+        <button @click="printCV" class="btn-cv-print">
+          🖨️ {{ t.cvPrintButton }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Printable CV Layout -->
+    <main class="cv-print-view">
+      <header class="cv-top">
+        <span class="cv-label">{{ t.cvHeaderLabel }}</span>
+        <h1>Luis Eduardo Ronquillo Arroyo</h1>
+        <div class="cv-role">{{ t.cvRole }}</div>
+        <p class="cv-summary">{{ t.cvSummary }}</p>
+
+        <div class="cv-impactGrid">
+          <div v-for="stat in t.stats" :key="stat[1]" class="cv-metric">
+            <strong>{{ stat[0] }}</strong>
+            <span>{{ stat[1] }}</span>
+          </div>
+        </div>
+
+        <div class="cv-contact">
+          <span>{{ t.location }}</span>
+          <a :href="email">lronquillo977@gmail.com</a>
+          <a :href="github" target="_blank">github.com/LuisRonquillo97</a>
+          <a :href="linkedIn" target="_blank">LinkedIn</a>
+        </div>
+      </header>
+
+      <div class="cv-content">
+        <div class="cv-mainColumn">
+          <section class="cv-section">
+            <h2>{{ t.projectTitle }}</h2>
+            <article class="cv-project">
+              <h3>{{ t.projectName }}</h3>
+              <p>{{ t.projectLead }}</p>
+              <ul>
+                <li v-for="bullet in t.projectBullets" :key="bullet">{{ bullet }}</li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="cv-section">
+            <h2>{{ t.expTitle }}</h2>
+            <article v-for="job in t.jobs" :key="job.company" class="cv-job">
+              <h3>{{ job.title }}</h3>
+              <div class="cv-company">{{ job.company }} · {{ job.period }}</div>
+              <ul>
+                <li v-for="point in job.points" :key="point">{{ point }}</li>
+              </ul>
+            </article>
+          </section>
+        </div>
+
+        <aside class="cv-aside">
+          <section class="cv-sideBox">
+            <h2>{{ t.stackTitle }}</h2>
+            <div v-for="group in t.stackGroups" :key="group[0]" class="cv-skillGroup">
+              <h4>{{ group[0] }}</h4>
+              <div class="cv-chips">
+                <span v-for="item in group[1]" :key="item" class="cv-chip">{{ item }}</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="cv-sideBox">
+            <h2>{{ t.cvSpecialtyTitle }}</h2>
+            <p class="cv-smallText">{{ t.cvSpecialtyText }}</p>
+          </section>
+
+          <section class="cv-sideBox">
+            <h2>{{ t.certTitle }}</h2>
+            <p class="cv-smallText"><strong>{{ t.cert }}</strong></p>
+          </section>
+
+          <section class="cv-sideBox">
+            <h2>{{ t.cvObjectiveTitle }}</h2>
+            <p class="cv-smallText">{{ t.cvObjectiveText }}</p>
+          </section>
+        </aside>
+      </div>
+
+      <footer class="cv-footer">
+        <span><strong>{{ t.cvKeywordsTitle }}:</strong> {{ t.cvKeywordsText }}</span>
+      </footer>
+    </main>
+  </div>
 </template>

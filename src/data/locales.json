@@ -1,0 +1,188 @@
+{
+  "es": {
+    "nav": ["Impacto", "Case Study", "Experiencia", "Stack", "Contacto"],
+    "role": "Lead Backend Engineer",
+    "heroLine": "Backend cloud para sistemas que no pueden fallar.",
+    "intro": "Construyo plataformas backend escalables para telecomunicaciones y servicios financieros: microservicios, APIs productivas, integraciones enterprise y modernización de sistemas legacy sobre AWS.",
+    "ctaPrimary": "Contactar",
+    "ctaSecondary": "Ver GitHub",
+    "location": "Mérida, Yucatán, México",
+    "metricTitle": "Impacto técnico",
+    "stats": [
+      ["30+", "Microservicios"],
+      ["15+", "APIs empresariales"],
+      ["5+", "Developers liderados"],
+      ["6+", "Años de experiencia"]
+    ],
+    "projectTitle": "Proyecto insignia",
+    "projectName": "MVNO Macropay + Altán",
+    "projectLead": "Lideré técnicamente el backend del operador móvil virtual de Macropay desde cero, integrando telecomunicaciones, pagos, SAP y procesos críticos de negocio.",
+    "projectBullets": [
+      "Integración con Altán mediante Innovatia.",
+      "Flujos para líneas nuevas, portabilidad numérica y recargas.",
+      "Envío automático de pagos exitosos hacia SAP para procesos contables.",
+      "Backend basado en microservicios, APIs REST, TypeScript y AWS.",
+      "Supervisión de frontend, soporte QA y resolución de defectos."
+    ],
+    "domainsTitle": "Donde genero valor",
+    "domains": [
+      ["Telecom", "MVNO, Altán, portabilidad, recargas y servicios móviles."],
+      ["Fintech", "SAP, Belvo, Tapi, créditos, pagos e integraciones financieras."],
+      ["Cloud", "AWS Lambda, ECS, API Gateway, SQS, DynamoDB, S3 y CloudWatch."],
+      ["Modernización", "Migración legacy, desacoplamiento de monolitos y event-driven systems."]
+    ],
+    "expTitle": "Experiencia profesional",
+    "jobs": [
+      {
+        "company": "Fundación Rafael Dondé IAP",
+        "title": "Senior Fullstack / Backend Developer",
+        "period": "Feb 2025 – Actualidad",
+        "points": [
+          "Modernización de sistemas legacy hacia tecnologías actuales.",
+          "Integración de colas Amazon SQS con monolitos para desacoplar procesos críticos.",
+          "Integraciones financieras con Tapi.",
+          "Desarrollo de APIs, microservicios y soluciones cloud sobre AWS."
+        ]
+      },
+      {
+        "company": "Macropay",
+        "title": "Backend Semi Senior / Technical Lead",
+        "period": "Sep 2022 – Feb 2025",
+        "points": [
+          "Liderazgo técnico en plataforma MVNO sobre infraestructura Altán.",
+          "Desarrollo de 30+ microservicios y 15+ APIs en TypeScript/JavaScript.",
+          "Servicios en AWS Lambda, ECS, API Gateway, SQS, DynamoDB, S3 y CloudWatch.",
+          "Integraciones con SAP, Belvo y sistemas internos de crédito."
+        ]
+      },
+      {
+        "company": "Grupo Boxito / Blue Ocean / COMA",
+        "title": "Software Engineer",
+        "period": "2019 – 2022",
+        "points": [
+          "APIs internas, automatización de procesos y software empresarial.",
+          "Experiencia con C#, SQL Server, Oracle, Angular, Azure, IIS y sistemas legacy."
+        ]
+      }
+    ],
+    "stackTitle": "Stack tecnológico",
+    "stackGroups": [
+      ["Backend", ["Node.js", "TypeScript", "JavaScript", "C#", ".NET", "REST APIs", "Microservices", "SQL BD", "No-SQL BD"]],
+      ["AWS", ["Lambda", "ECS", "API Gateway", "SQS", "DynamoDB", "S3", "CloudWatch"]],
+      ["DevOps", ["Docker", "Jenkins", "CI/CD", "Git", "Dev / QA / Staging / Prod"]],
+      ["Enterprise", ["SAP", "Belvo", "Tapi", "Legacy modernization", "Event-driven systems"]]
+    ],
+    "certTitle": "Certificación",
+    "cert": "AWS Associate — en proceso",
+    "contactTitle": "Listo para construir sistemas de alto impacto",
+    "contactText": "Abierto a oportunidades como Lead Backend Engineer, Senior Backend Engineer o AWS Backend Engineer en fintech, telecom, banca, seguros o modernización cloud.",
+    "contactButton": "Enviar correo",
+    "modeGengar": "Gengar (Oscuro)",
+    "modeBlaziken": "Blaziken (Claro)",
+    "cvHeaderLabel": "Backend / Cloud / Integraciones",
+    "cvRole": "Senior Backend Engineer | AWS · Node.js · TypeScript · C#/.NET",
+    "cvSummary": "Backend Engineer con más de 6 años de experiencia construyendo plataformas para fintech, telecomunicaciones y servicios empresariales. Experiencia desarrollando microservicios, APIs productivas, integraciones enterprise y soluciones cloud sobre AWS, con participación técnica en sistemas críticos como MVNO, pagos, créditos, SAP, Belvo y Tapi.",
+    "cvSpecialtyTitle": "Especialidad",
+    "cvSpecialtyText": "Diseño y desarrollo de servicios backend, microservicios, integraciones financieras, modernización de sistemas legacy y arquitecturas event-driven sobre AWS.",
+    "cvObjectiveTitle": "Objetivo",
+    "cvObjectiveText": "Abierto a oportunidades como Senior Backend Engineer, Lead Backend Engineer, AWS Backend Engineer o Backend Developer en modalidad remota o híbrida.",
+    "cvPrintButton": "Imprimir / PDF",
+    "cvBackButton": "Volver al portafolio",
+    "cvDownloadCTA": "Descargar CV",
+    "cvKeywordsTitle": "Keywords",
+    "cvKeywordsText": "AWS · Backend · Microservices · APIs · Fintech · Telecom · C# · Node.js · TypeScript"
+  },
+  "en": {
+    "nav": ["Impact", "Case Study", "Experience", "Stack", "Contact"],
+    "role": "Lead Backend Engineer",
+    "heroLine": "Cloud backend for systems that cannot fail.",
+    "intro": "I build scalable backend platforms for telecom and financial services: microservices, production APIs, enterprise integrations and AWS-based legacy modernization.",
+    "ctaPrimary": "Contact",
+    "ctaSecondary": "View GitHub",
+    "location": "Mérida, Yucatán, Mexico",
+    "metricTitle": "Technical impact",
+    "stats": [
+      ["30+", "Microservices"],
+      ["15+", "Enterprise APIs"],
+      ["5+", "Developers led"],
+      ["6+", "Years of experience"]
+    ],
+    "projectTitle": "Signature project",
+    "projectName": "Macropay MVNO + Altán",
+    "projectLead": "Technical leadership in the backend development of Macropay’s MVNO from zero, integrating telecom services, payments, SAP and business-critical processes.",
+    "projectBullets": [
+      "Integration with Altán through Innovatia.",
+      "New line activation, number portability and mobile top-up flows.",
+      "Automatic delivery of successful payment data to SAP for accounting processes.",
+      "Backend based on microservices, REST APIs, TypeScript and AWS.",
+      "Frontend supervision, QA support and defect resolution."
+    ],
+    "domainsTitle": "Where I create value",
+    "domains": [
+      ["Telecom", "MVNO, Altán, portability, mobile top-ups and mobile services."],
+      ["Fintech", "SAP, Belvo, Tapi, credit systems, payments and financial integrations."],
+      ["Cloud", "AWS Lambda, ECS, API Gateway, SQS, DynamoDB, S3 and CloudWatch."],
+      ["Modernization", "Legacy migration, monolith decoupling and event-driven systems."]
+    ],
+    "expTitle": "Professional experience",
+    "jobs": [
+      {
+        "company": "Fundación Rafael Dondé IAP",
+        "title": "Senior Fullstack / Backend Developer",
+        "period": "Feb 2025 – Present",
+        "points": [
+          "Modernization of legacy systems into current technologies.",
+          "Amazon SQS queue integration with monolithic systems to decouple critical processes.",
+          "Financial integrations with Tapi.",
+          "Backend APIs, microservices and AWS cloud solutions."
+        ]
+      },
+      {
+        "company": "Macropay",
+        "title": "Backend Semi Senior / Technical Lead",
+        "period": "Sep 2022 – Feb 2025",
+        "points": [
+          "Technical leadership in an MVNO platform built on Altán infrastructure.",
+          "Built 30+ microservices and 15+ APIs using TypeScript/JavaScript.",
+          "Implemented services using AWS Lambda, ECS, API Gateway, SQS, DynamoDB, S3 and CloudWatch.",
+          "Integrations with SAP, Belvo and internal credit systems."
+        ]
+      },
+      {
+        "company": "Grupo Boxito / Blue Ocean / COMA",
+        "title": "Software Engineer",
+        "period": "2019 – 2022",
+        "points": [
+          "Internal APIs, process automation and enterprise software systems.",
+          "Experience with C#, SQL Server, Oracle, Angular, Azure, IIS and legacy systems."
+        ]
+      }
+    ],
+    "stackTitle": "Technical stack",
+    "stackGroups": [
+      ["Backend", ["Node.js", "TypeScript", "JavaScript", "C#", ".NET", "REST APIs", "Microservices","SQL DB", "No-SQL DB"]],
+      ["AWS", ["Lambda", "ECS", "API Gateway", "SQS", "DynamoDB", "S3", "CloudWatch"]],
+      ["DevOps", ["Docker", "Jenkins", "CI/CD", "Git", "Dev / QA / Staging / Prod"]],
+      ["Enterprise", ["SAP", "Belvo", "Tapi", "Legacy modernization", "Event-driven systems"]]
+    ],
+    "certTitle": "Certification",
+    "cert": "AWS Associate — in progress",
+    "contactTitle": "Ready to build high-impact systems",
+    "contactText": "Open to Lead Backend Engineer, Senior Backend Engineer or AWS Backend Engineer opportunities in fintech, telecom, banking, insurance or cloud modernization.",
+    "contactButton": "Send email",
+    "modeGengar": "Gengar (Dark)",
+    "modeBlaziken": "Blaziken (Light)",
+    "cvHeaderLabel": "Backend / Cloud / Integrations",
+    "cvRole": "Senior Backend Engineer | AWS · Node.js · TypeScript · C#/.NET",
+    "cvSummary": "Backend Engineer with over 6 years of experience building platforms for fintech, telecommunications, and enterprise services. Experienced in developing microservices, production APIs, enterprise integrations, and AWS cloud solutions, with technical involvement in critical systems such as MVNO, payments, credit systems, SAP, Belvo, and Tapi.",
+    "cvSpecialtyTitle": "Specialty",
+    "cvSpecialtyText": "Design and development of backend services, microservices, financial integrations, legacy systems modernization, and event-driven architectures on AWS.",
+    "cvObjectiveTitle": "Objective",
+    "cvObjectiveText": "Open to opportunities as Senior Backend Engineer, Lead Backend Engineer, AWS Backend Engineer, or Backend Developer in remote or hybrid setups.",
+    "cvPrintButton": "Print / PDF",
+    "cvBackButton": "Back to portfolio",
+    "cvDownloadCTA": "Download CV",
+    "cvKeywordsTitle": "Keywords",
+    "cvKeywordsText": "AWS · Backend · Microservices · APIs · Fintech · Telecom · C# · Node.js · TypeScript"
+  }
+}
